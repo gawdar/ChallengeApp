@@ -1,71 +1,46 @@
-﻿int number = 4594; //deklaracja liczby
-string numberAsString = number.ToString(); //Zmienia liczby na tekst
-char[] digits = numberAsString.ToArray();   //Tworzy tabblicę znaków
+﻿using ChallengeApp;
 
-int digit0 = 0;
-int digit1 = 0;
-int digit2 = 0;
-int digit3 = 0;
-int digit4 = 0;
-int digit5 = 0;
-int digit6 = 0;
-int digit7 = 0;
-int digit8 = 0;
-int digit9 = 0;
+Employee employee1 = new Employee("Adam", "Słodowy", 60);
+Employee employee2 = new Employee("Monika", "Zych", 32);
+Employee employee3 = new Employee("Mirosław", "Misiek", 40);
 
-foreach (char digit in digits)
+
+employee1.AddScore(10);
+employee1.AddScore(5);
+employee1.AddScore(2);
+employee1.AddScore(1);
+employee1.AddScore(3);
+
+employee2.AddScore(7);
+employee2.AddScore(8);
+employee2.AddScore(3);
+employee2.AddScore(2);
+employee2.AddScore(9);
+
+employee3.AddScore(3);
+employee3.AddScore(5);
+employee3.AddScore(9);
+employee3.AddScore(8);
+employee3.AddScore(4);
+
+List<Employee> employess = new List<Employee>()
+{ 
+    employee1, employee2, employee3 
+};
+
+int maxResult = -1;
+Employee employeeWithMaxResult = null;
+
+
+foreach (var employee in employess)
 {
-    if (digit == '0')
+    if (employee.Result > maxResult)
     {
-        digit0++;
-    }
-    else if(digit == '1')
-    {
-        digit1++;
-    }
-    else if(digit == '2')
-    {
-        digit2++;
-    }
-    else if (digit == '3')
-    {
-        digit3++;
-    }
-    else if(digit == '4')
-    {
-        digit4++;
-    }
-    else if(digit == '5')
-    {
-        digit5++;
-    }
-    else if(digit == '6')
-    {  
-        digit6++;
-    }
-    else if( digit == '7')
-    {
-        digit7++;
-    }
-    else if(digit == '8')
-    {
-        digit8++;
-    }
-    else if(digit == '9')
-    {
-        digit9++;
+        employeeWithMaxResult = employee;
+        maxResult = employee.Result;
     }
 }
 
 
-Console.WriteLine("Number to count : " + number);
-Console.WriteLine("Digits 0 is : " + digit0);
-Console.WriteLine("Digits 1 is : " + digit1);
-Console.WriteLine("Digits 2 is : " + digit2);
-Console.WriteLine("Digits 3 is : " + digit3);
-Console.WriteLine("Digits 4 is : " + digit4);
-Console.WriteLine("Digits 5 is : " + digit5);
-Console.WriteLine("Digits 6 is : " + digit6);
-Console.WriteLine("Digits 7 is : " + digit7);
-Console.WriteLine("Digits 8 is : " + digit8);
-Console.WriteLine("Digits 9 is : " + digit9);
+
+Console.WriteLine("Pracownikiem z najwyższą liczbą ocen jest: " + employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surname + " " + "lat" + " " + employeeWithMaxResult.Age + " pracownik ten zdobył punktów: " + maxResult );
